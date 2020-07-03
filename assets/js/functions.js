@@ -1,111 +1,115 @@
-;(function($){
-    'use strict';
-    let $document                                   = $(document),
-        $body                                       = $('body'),
-        $window                                     = $(window),
-        $biolife_slide                              = $('.biolife-carousel'),
-        $scroll_items                               = $('.biolife-cart-info .minicart-block ul.products'),
-        $vertical_menu                              = $('#header .vertical-category-block:not(.always)'),
-        $menu_mobile                                = $('.clone-main-menu'),
-        $sticky_object                              = $('.biolife-sticky-object'),
-        $shop_filter                                = $('#top-functions-area'),
-        $biolife_select                             = $('select:not(.hidden)'),
-        $rating_form                                = $('.comment-form-rating'),
-        $accodition                                 = $('.biolife-accodition'),
-        $block_tab                                  = $('.biolife-tab-contain, .ovictab-contain'),
-        $biolife_countdown                          = $('.biolife-countdown:not(.under_testing_mode)'),
-        $biolife_popup                              = $('.biolife-popup'),
-        $pre_loader                                 = $('#biof-loading'),
-        $btn_scroll_top                             = $('.btn-scroll-top'),
-        $biolife_stretch_the_right_background       = $('.biolife-stretch-the-right-background'),
-        $js_seach_inline                            = $('.js_seach_inline'),
-        $product_packages                           = $('.product-packages__head'),
-        $equal_elements                             = $('.equal_contain');
+(function($) {
+    "use strict";
+    let $document = $(document),
+        $body = $("body"),
+        $window = $(window),
+        $biolife_slide = $(".biolife-carousel"),
+        $scroll_items = $(".biolife-cart-info .minicart-block ul.products"),
+        $vertical_menu = $("#header .vertical-category-block:not(.always)"),
+        $menu_mobile = $(".clone-main-menu"),
+        $sticky_object = $(".biolife-sticky-object"),
+        $shop_filter = $("#top-functions-area"),
+        $biolife_select = $("select:not(.hidden)"),
+        $rating_form = $(".comment-form-rating"),
+        $accodition = $(".biolife-accodition"),
+        $block_tab = $(".biolife-tab-contain, .ovictab-contain"),
+        $biolife_countdown = $(".biolife-countdown:not(.under_testing_mode)"),
+        $biolife_popup = $(".biolife-popup"),
+        $pre_loader = $("#biof-loading"),
+        $btn_scroll_top = $(".btn-scroll-top"),
+        $biolife_stretch_the_right_background = $(
+            ".biolife-stretch-the-right-background"
+        ),
+        $js_seach_inline = $(".js_seach_inline"),
+        $product_packages = $(".product-packages__head"),
+        $equal_elements = $(".equal_contain");
 
     /*Create Mobile Menu*/
-    if( $menu_mobile.length ) {
+    if ($menu_mobile.length) {
         $menu_mobile.biolife_menu_mobile();
     }
 
     /*Register Quickview Box*/
-    if($('#biolife-quickview-block').length){
-        $document.on('click','.btn_call_quickview', function (e){
-            if($(window).width() > 991){
+    if ($("#biolife-quickview-block").length) {
+        $document.on("click", ".btn_call_quickview", function(e) {
+            if ($(window).width() > 991) {
                 e.preventDefault();
-                $('body').trigger( 'open-overlay',['open-quickview-block']);
-                $('#biolife-quickview-block-popup').modal('show');
+                $("body").trigger("open-overlay", ["open-quickview-block"]);
+                $("#biolife-quickview-block-popup").modal("show");
             }
-        })
+        });
     }
 
     /*Register Select Element*/
-    if( $biolife_select.length ){
-        $biolife_select.niceSelect()
+    if ($biolife_select.length) {
+        $biolife_select.niceSelect();
     }
 
     /*Minicart Scroll handle*/
-    if( $scroll_items.length){
+    if ($scroll_items.length) {
         $scroll_items.niceScroll();
     }
 
     /*Carousel Handle*/
-    if( $biolife_slide.length){
+    if ($biolife_slide.length) {
         $biolife_slide.biolife_init_carousel();
     }
 
     /*Vertical Menu Handle*/
-    if( $vertical_menu.length){
+    if ($vertical_menu.length) {
         $vertical_menu.biolife_vertical_menu();
     }
 
     /*Toggle shop filter on mobile*/
-    if( $shop_filter.length){
-        $shop_filter.on('click', 'a.icon-for-mobile', function (e) {
+    if ($shop_filter.length) {
+        $shop_filter.on("click", "a.icon-for-mobile", function(e) {
             e.preventDefault();
-            $body.trigger( 'open-overlay', ['top-refine-opened']);
+            $body.trigger("open-overlay", ["top-refine-opened"]);
         });
     }
 
     /*Header Sticky*/
-    if( $sticky_object.length){
+    if ($sticky_object.length) {
         $sticky_object.biolife_sticky_header();
     }
 
     /*JS Search Inline*/
-    if( $js_seach_inline.length ){
-        $js_seach_inline.on( 'click', '.js_btn_click , .mobile-overlay' , function (e) {
+    if ($js_seach_inline.length) {
+        $js_seach_inline.on("click", ".js_btn_click , .mobile-overlay", function(
+            e
+        ) {
             e.preventDefault();
-            var $this   = $(this),
-                $parent = $this.closest('.js_seach_inline');
-            $parent.toggleClass('search-active');
-            if( $parent.hasClass('search-active') ){
-                $parent.find('.biolife-input__text').focus();
+            var $this = $(this),
+                $parent = $this.closest(".js_seach_inline");
+            $parent.toggleClass("search-active");
+            if ($parent.hasClass("search-active")) {
+                $parent.find(".biolife-input__text").focus();
             }
         });
     }
 
     /*Tab button*/
-    if( $block_tab.length){
+    if ($block_tab.length) {
         $block_tab.biolife_tab();
     }
 
     /*Rating on single product*/
-    if( $rating_form.length){
+    if ($rating_form.length) {
         $rating_form.biolife_rating_form_handle();
     }
 
     /*Accodition menu*/
-    if( $accodition.length){
+    if ($accodition.length) {
         $accodition.biolife_accodition_handle();
     }
 
     /*Countdown*/
-    if( $biolife_countdown.length){
+    if ($biolife_countdown.length) {
         $biolife_countdown.biolife_countdown();
     }
 
     /*stretch right background*/
-    if( $biolife_stretch_the_right_background.length){
+    if ($biolife_stretch_the_right_background.length) {
         $biolife_stretch_the_right_background.biolife_stretch_the_right_background();
         window.onresize = function(event) {
             event.preventDefault();
@@ -114,145 +118,161 @@
     }
 
     /*Popup*/
-    if( $biolife_popup.length){
-        $biolife_popup.modal('show');
+    if ($biolife_popup.length) {
+        $biolife_popup.modal("show");
     }
 
     /*Scroll to top*/
-    if( $btn_scroll_top.length){
-        $window.on('scroll', function () {
+    if ($btn_scroll_top.length) {
+        $window.on("scroll", function() {
             if ($window.scrollTop() >= 800) {
-                $btn_scroll_top.addClass('showUp');
+                $btn_scroll_top.addClass("showUp");
             } else {
-                $btn_scroll_top.removeClass('showUp');
+                $btn_scroll_top.removeClass("showUp");
             }
         });
-        $btn_scroll_top.on('click', function () {
-            $('html, body').animate({
-                scrollTop: 0
-            }, 1500);
+        $btn_scroll_top.on("click", function() {
+            $("html, body").animate({
+                    scrollTop: 0,
+                },
+                1500
+            );
         });
     }
 
-    if( $product_packages.length ){
-        $product_packages.on( 'click' , '.actions .btn' , function (e) {
+    if ($product_packages.length) {
+        $product_packages.on("click", ".actions .btn", function(e) {
             e.preventDefault();
             var $btn = $(this),
-                label = $btn.data('label'),
+                label = $btn.data("label"),
                 $parent = $btn.parent();
 
-            if( $parent.hasClass('active') ) return 0;
+            if ($parent.hasClass("active")) return 0;
 
-            $parent.siblings().removeClass('active');
-            $parent.addClass('active');
-            var $prices =  $parent.closest('.product-packages').find('.prices');
+            $parent.siblings().removeClass("active");
+            $parent.addClass("active");
+            var $prices = $parent.closest(".product-packages").find(".prices");
 
-            if( $prices.length ){
-                $prices.find('.active').removeClass('active');
-                $prices.find('[data-label='+label+']').addClass('active');
+            if ($prices.length) {
+                $prices.find(".active").removeClass("active");
+                $prices.find("[data-label=" + label + "]").addClass("active");
             }
         });
     }
 
-    if( $equal_elements.length ){
+    if ($equal_elements.length) {
         $equal_elements.biolife_equal_elements();
     }
     /*Events On Document*/
-    $document.on('click','.minicart-item .action .edit',function (e){
+    $document.on("click", ".minicart-item .action .edit", function(e) {
         e.preventDefault();
-        let $this       = $(this),
-            cart_item   = $this.closest('.minicart-item'),
-            input_field = cart_item.find('.input-qty'),
-            curent_val  = input_field.val();
-        if( !cart_item.hasClass('editing')){
-            cart_item.addClass('editing');
-            input_field.removeAttr('disabled').val('');
+        let $this = $(this),
+            cart_item = $this.closest(".minicart-item"),
+            input_field = cart_item.find(".input-qty"),
+            curent_val = input_field.val();
+        if (!cart_item.hasClass("editing")) {
+            cart_item.addClass("editing");
+            input_field.removeAttr("disabled").val("");
             input_field.val(curent_val).focus();
-        }else{
-            cart_item.removeClass('editing');
-            input_field.attr('disabled', 'disabled');
+        } else {
+            cart_item.removeClass("editing");
+            input_field.attr("disabled", "disabled");
         }
     });
 
-    $document.on('click','.minicart-item .action .remove',function (e){
+    $document.on("click", ".minicart-item .action .remove", function(e) {
         e.preventDefault();
         let $this = $(this);
-        $this.closest('li').remove();
-        $('body').trigger( 'update-minicart',[ $this.closest('.cart-inner') ]);
+        $this.closest("li").remove();
+        $("body").trigger("update-minicart", [$this.closest(".cart-inner")]);
     });
 
-    $document.on('click touchstart','#overlay',function (e){
+    $document.on("click touchstart", "#overlay", function(e) {
         e.preventDefault();
-        let _this           = $(this),
-            current_class   = _this.attr('data-object'),
-            class_list      = 'open-overlay';
-        if( typeof current_class !== "undefined" && current_class !== ''){
-            class_list +=' ' + current_class;
-            _this.attr('data-object','');
+        let _this = $(this),
+            current_class = _this.attr("data-object"),
+            class_list = "open-overlay";
+        if (typeof current_class !== "undefined" && current_class !== "") {
+            class_list += " " + current_class;
+            _this.attr("data-object", "");
         }
-        $('body').removeClass(class_list);
+        $("body").removeClass(class_list);
     });
 
-    $document.on('click','.mobile-search .btn-close',function (e){
+    $document.on("click", ".mobile-search .btn-close", function(e) {
         e.preventDefault();
-        $('body').removeClass('open-overlay open-mobile-search');
+        $("body").removeClass("open-overlay open-mobile-search");
     });
 
-    $document.on('click','.mobile-search .open-searchbox, .dsktp-open-searchbox',function (e){
-        e.preventDefault();
-        $body.trigger( 'open-overlay',['open-mobile-search']);
-    });
-
-    $document.on('click','.mobile-footer .btn-toggle, .mobile-menu-toggle .btn-toggle',function (e){
-        e.preventDefault();
-        let class_name = $(this).attr('data-object');
-        if(typeof class_name !=="undefined"){
-            $body.trigger( 'open-overlay',[class_name]);
+    $document.on(
+        "click",
+        ".mobile-search .open-searchbox, .dsktp-open-searchbox",
+        function(e) {
+            e.preventDefault();
+            $body.trigger("open-overlay", ["open-mobile-search"]);
         }
-    });
+    );
 
-    $document.on('click','.biolife-mobile-panels .biolife-close-btn, .biolife-panels-actions-wrap .biolife-close-btn, .btn-close-quickview', function (e){
-        e.preventDefault();
-        let class_name = $(this).attr('data-object');
-        if(typeof class_name !== 'undefined'){
-            $body.trigger('close-overlay', [class_name]);
+    $document.on(
+        "click",
+        ".mobile-footer .btn-toggle, .mobile-menu-toggle .btn-toggle",
+        function(e) {
+            e.preventDefault();
+            let class_name = $(this).attr("data-object");
+            if (typeof class_name !== "undefined") {
+                $body.trigger("open-overlay", [class_name]);
+            }
         }
-    });
+    );
 
-    $document.on('click','.biolife-filter .check-list .check-link', function (e){
-        e.preventDefault();
-        let this_item   = $(this),
-            father      = this_item.parent(),
-            contain     = this_item.closest('ul.check-list');
-        if( !contain.hasClass('multiple')){
-            father.siblings().removeClass('selected');
+    $document.on(
+        "click",
+        ".biolife-mobile-panels .biolife-close-btn, .biolife-panels-actions-wrap .biolife-close-btn, .btn-close-quickview",
+        function(e) {
+            e.preventDefault();
+            let class_name = $(this).attr("data-object");
+            if (typeof class_name !== "undefined") {
+                $body.trigger("close-overlay", [class_name]);
+            }
         }
-        father.toggleClass('selected');
+    );
+
+    $document.on("click", ".biolife-filter .check-list .check-link", function(
+        e
+    ) {
+        e.preventDefault();
+        let this_item = $(this),
+            father = this_item.parent(),
+            contain = this_item.closest("ul.check-list");
+        if (!contain.hasClass("multiple")) {
+            father.siblings().removeClass("selected");
+        }
+        father.toggleClass("selected");
     });
 
-    $document.on('click','.biolife-filter .color-list .c-link', function (e){
+    $document.on("click", ".biolife-filter .color-list .c-link", function(e) {
         e.preventDefault();
         let father = $(this).parent();
-        father.siblings().removeClass('selected');
-        father.toggleClass('selected');
+        father.siblings().removeClass("selected");
+        father.toggleClass("selected");
     });
 
-    $document.on('click','.qty-input .qty-btn', function (e){
+    $document.on("click", ".qty-input .qty-btn", function(e) {
         e.preventDefault();
-        let btn     = $(this),
-            input   = btn.siblings("input[name^='qty']");
-        if(input.length){
-            let current_val = parseInt(input.val(),10),
-                max_val     = parseInt(input.data('max_value'),10),
-                step        = parseInt(input.data('step'),10);
-            if( btn.hasClass('btn-up')){
+        let btn = $(this),
+            input = btn.siblings("input[name^='qty']");
+        if (input.length) {
+            let current_val = parseInt(input.val(), 10),
+                max_val = parseInt(input.data("max_value"), 10),
+                step = parseInt(input.data("step"), 10);
+            if (btn.hasClass("btn-up")) {
                 current_val += step;
-                if ( current_val <= max_val ){
+                if (current_val <= max_val) {
                     input.val(current_val);
                 }
-            }else{
+            } else {
                 current_val -= step;
-                if ( current_val > 0 ){
+                if (current_val > 0) {
                     input.val(current_val);
                 }
             }
@@ -260,26 +280,28 @@
     });
 
     /*Events On Body Target*/
-    $body.on('update-minicart', function ( el, block_minicart) {
-        if( block_minicart.find('ul.products li').length === 0 ){
-            block_minicart.html('<p class="minicart-empty">No product in your cart</p>');
+    $body.on("update-minicart", function(el, block_minicart) {
+        if (block_minicart.find("ul.products li").length === 0) {
+            block_minicart.html(
+                '<p class="minicart-empty">No product in your cart</p>'
+            );
         }
     });
 
-    $body.on('open-overlay', function ( e, classes) {
-        let addition_classes = 'open-overlay';
-        if( classes !== ''){
-            addition_classes +=' '+ classes;
-            $('#overlay').attr('data-object', classes);
+    $body.on("open-overlay", function(e, classes) {
+        let addition_classes = "open-overlay";
+        if (classes !== "") {
+            addition_classes += " " + classes;
+            $("#overlay").attr("data-object", classes);
         }
         $body.addClass(addition_classes);
     });
 
-    $body.on('close-overlay', function ( e, object) {
-        let classes = 'open-overlay';
-        if( object !== ''){
-            classes +=' '+ object;
-            $('#overlay').attr('data-object','');
+    $body.on("close-overlay", function(e, object) {
+        let classes = "open-overlay";
+        if (object !== "") {
+            classes += " " + object;
+            $("#overlay").attr("data-object", "");
         }
         $body.removeClass(classes);
     });
@@ -287,16 +309,24 @@
     /*Create overlay Element*/
     $body.append('<div  id="overlay"></div>');
 
-
     $.fn.biolife_best_equal_products();
 
+    $(document).scroll(function() {
+        var y = $(this).scrollTop();
+        if (y > 800) {
+            $(".bottomMenu").fadeIn();
+        } else {
+            $(".bottomMenu").fadeOut();
+        }
+    });
+
     /*preload handle*/
-    $window.on('load', function() {
-        if( $pre_loader.length){
+    $window.on("load", function() {
+        if ($pre_loader.length) {
             $pre_loader.fadeOut(800);
-            setTimeout(function(){
+            setTimeout(function() {
                 $pre_loader.remove();
-            },3000);
+            }, 3000);
         }
     });
 })(jQuery);
